@@ -50,4 +50,8 @@ export class StatisticService {
       })
     );
   }
+
+  getFiles(){
+    return this.http.get<string[]>(`${BASE_URL}/files`)
+  }
 }

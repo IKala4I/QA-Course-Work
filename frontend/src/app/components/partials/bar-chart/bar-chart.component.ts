@@ -27,7 +27,7 @@ export class BarChartComponent implements OnInit {
     const labels = Object.keys(this.errObject).filter(key => key !== 'label');
     const data = labels.map(key => this.errObject[key]);
 
-    new Chart(this.myChart.nativeElement, {
+    const chart = new Chart(this.myChart.nativeElement, {
       type: 'bar',
       data: {
         labels: labels,
@@ -60,7 +60,7 @@ export class BarChartComponent implements OnInit {
           x: {
             ticks: {
               font: {
-                size: 18,
+                size: 14,
                 weight: 'bold'
               }
             }
@@ -68,7 +68,7 @@ export class BarChartComponent implements OnInit {
           y: {
             ticks: {
               font: {
-                size: 18,
+                size: 14,
                 weight: 'bold'
               }
             },
@@ -87,5 +87,7 @@ export class BarChartComponent implements OnInit {
         }
       }
     });
+    chart.reset();
+    chart.update();
   }
 }

@@ -26,6 +26,14 @@ router.get('/statistic', async function (req, res, next) {
     }
 });
 
+router.get('/statistic/files', function (req, res, next) {
+    try {
+        res.status(200).send(fileNames);
+    } catch (err) {
+        return res.status(500).send('Internal Server Error');
+    }
+});
+
 router.get('/statistic/:fileName', async function (req, res, next) {
     try {
         const {fileName} = req.params;

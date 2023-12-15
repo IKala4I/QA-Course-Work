@@ -6,10 +6,7 @@
     </div>
     <div>
       <select #select>
-        <option value="Filtration" selected>Filtration.js</option>
-        <option value="Searching">Searching.js</option>
-        <option value="Sorting">Sorting.js</option>
-        <option value="Validation">Validation.js</option>
+        <option *ngFor="let file of files" [value]="file">{{ file }}.js</option>
       </select>
       <button (click)="getFileStatistic(select.value)">Get Statistic by File</button>
     </div>

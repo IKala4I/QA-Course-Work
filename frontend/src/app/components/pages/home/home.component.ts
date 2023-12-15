@@ -2,6 +2,8 @@ import {Component} from '@angular/core';
 import {StatisticService} from '../../../services/statistic.service';
 import {NgClass, NgForOf} from '@angular/common';
 import {BarChartComponent} from '../../partials/bar-chart/bar-chart.component';
+import {Errors} from '../../../shared/interfaces/errors';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -9,15 +11,21 @@ import {BarChartComponent} from '../../partials/bar-chart/bar-chart.component';
   imports: [
     BarChartComponent,
     NgForOf,
-    NgClass
+    NgClass,
+    FormsModule
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  statistic!: any;
+
+  statistic!: Errors[];
+  files!: string[];
 
   constructor(private statisticService: StatisticService) {
+    statisticService.getFiles().subscribe(files => {
+      this.files = files;
+    });
   }
 
   getAggregatedStatistic() {
