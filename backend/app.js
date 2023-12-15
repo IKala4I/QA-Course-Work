@@ -20,7 +20,7 @@ app.use('/', indexRouter);
 app.use(express.static('public'));
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'built', 'public', 'browser', 'index.html'));
+    res.sendFile(path.join(__dirname, 'built', 'public', 'index.html'));
 });
 
 const port = 5000;
