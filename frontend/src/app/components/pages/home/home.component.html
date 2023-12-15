@@ -1,0 +1,24 @@
+<main>
+  <div class="statistic-options">
+    <div>
+      <button (click)="getSeparatedStatistic()">Get Separated Statistics</button>
+      <button (click)="getAggregatedStatistic()">Get Aggregated Statistics</button>
+    </div>
+    <div>
+      <select #select>
+        <option value="Filtration" selected>Filtration.js</option>
+        <option value="Searching">Searching.js</option>
+        <option value="Sorting">Sorting.js</option>
+        <option value="Validation">Validation.js</option>
+      </select>
+      <button (click)="getFileStatistic(select.value)">Get Statistic by File</button>
+    </div>
+  </div>
+
+
+  <div class="charts-wrapper">
+    <ng-container *ngFor="let errObject of statistic">
+      <app-bar-chart [errObject]="errObject" [ngClass]="{'narrow':statistic.length>1}"></app-bar-chart>
+    </ng-container>
+  </div>
+</main>
