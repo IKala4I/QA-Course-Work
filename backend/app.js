@@ -12,12 +12,12 @@ const app = express();
 
 app.use(cors({
     credentials: true,
-    origin: ['http://localhost:4200', 'https://qa-course-work.onrender.com']
+    origin: ['http://localhost:4200','http://localhost:5000', 'https://qa-course-work.onrender.com']
 }));
 
 app.use('/', indexRouter);
 
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'built', 'public')));
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'built', 'public', 'index.html'));
